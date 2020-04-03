@@ -62,8 +62,4 @@ typings/
 
 .DS_Store
 
-# CSS files
-
-*.css
-
 build
