@@ -14,7 +14,6 @@ class Login extends Component {
   }
 
   submit() {
-    console.log("hi");
     if(this.state.password != "help") return;
     else if (this.state.username == "buy") {
       this.props.login(1)
@@ -48,12 +47,20 @@ class Login extends Component {
                 <div className="card-content h-centered">
                   <div class="field">
                     <div class="control">
-                      <input class="input" type="text" placeholder="Username" onChange={e => this.handleChange("username", e.target.value)}/>
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Username"
+                        onChange={e => this.handleChange("username", e.target.value)}/>
                     </div>
                   </div>
                   <div class="field">
                     <div class="control">
-                      <input class="input" type="password" placeholder="Password" onChange={e => this.handleChange("password", e.target.value)}/>
+                      <input
+                        class="input"
+                        type="password"
+                        placeholder="Password"
+                        onChange={e => this.handleChange("password", e.target.value)}/>
                     </div>
                   </div>
                   <div class="field">
