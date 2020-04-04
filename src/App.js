@@ -21,6 +21,7 @@ class App extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.login = this.login.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class App extends Component {
     var id = cookies.get('userId');
     var isAuthenticated = cookies.get('isAuthenticated');
     if(id && isAuthenticated) {
-      this.handleChange("userId", id)
+      this.handleChange("userId", parseInt(id))
       this.handleChange("isAuthenticated", true)
     }
   }
@@ -39,6 +40,14 @@ class App extends Component {
     this.handleChange("isAuthenticated", true)
     cookies.set('userId', id, { path: '/' });
     cookies.set('isAuthenticated', true, { path: '/' });
+  }
+
+  logout () {
+    const cookies = new Cookies();
+    this.handleChange("isAuthenticated", false)
+    this.handleChange("userId", 0)
+    cookies.remove('userId', { path: '/' });
+    cookies.remove('isAuthenticated', { path: '/' });
   }
 
   handleChange (key, value) {
@@ -61,7 +70,7 @@ class App extends Component {
             <PublicRoute path='/home' component={Home} isAuthenticated={this.state.isAuthenticated} />
             <PublicRoute path='/login' component={Login} isAuthenticated={this.state.isAuthenticated} login={this.login} />
             <PublicRoute path='/signup' component={Signup} isAuthenticated={this.state.isAuthenticated} />
-            <SecureRoute path='/app' component={Secure} isAuthenticated={this.state.isAuthenticated} userId={this.state.userId} />
+            <SecureRoute path='/app' component={Secure} isAuthenticated={this.state.isAuthenticated} logout={this.logout} userId={this.state.userId} />
           </div>
         </Router>
     );

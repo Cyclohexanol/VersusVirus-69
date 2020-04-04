@@ -21,10 +21,13 @@
 	flex-direction: column
 	overflow-y: scroll
 
+.no-shrink
+	flex-shrink: 0
+
 .top-bar
 	width: 100vw
 	height: 60px
-	background-color: white
+	background-color: $light-primary
 	display: flex
 	flex-direction: row
 	justify-content: space-between
@@ -36,3 +39,19 @@
 	display: flex
 	flex-direction: column
 	align-items: center
+
+.is-flex-column
+	display: flex
+	flex-direction: column
+
+.is-column-item
+	margin-bottom: 1rem
+
+.is-column-item-first
+	margin-top: 1rem
+
+.is-max-350
+	max-width: 350px
+
+.space-between
+	justify-content: space-between
