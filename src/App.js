@@ -15,8 +15,23 @@ class App extends Component {
     super(props)
 
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      userId: 0
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.login = this.login.bind(this)
+  }
+
+  login (id) {
+    this.handleChange("userId", id)
+    this.isAuthenticated("isAuthenticated", true)
+  }
+
+  handleChange (key, value) {
+    this.setState(prevState => {
+      prevState[key] = value
+      return prevState
+    })
   }
 
   render() {
@@ -30,7 +45,7 @@ class App extends Component {
               )
             }/>
             <PublicRoute path='/home' component={Home} isAuthenticated={this.state.isAuthenticated} />
-            <PublicRoute path='/login' component={Login} isAuthenticated={this.state.isAuthenticated} />
+            <PublicRoute path='/login' component={Login} login={this.login} isAuthenticated={this.state.isAuthenticated} />
             <PublicRoute path='/signup' component={Signup} isAuthenticated={this.state.isAuthenticated} />
             <SecureRoute path='/app' component={Secure} isAuthenticated={this.state.isAuthenticated} />
             <Route exact path='/app' render={() => <Redirect to='/app/home' />} />

@@ -7118,7 +7118,22 @@ label.panel-block {
 .app {
   width: 100vw;
   height: 100vh;
-  background-color: #DBAD72;
   display: flex;
   flex-direction: column;
   overflow-y: scroll; }
+
+.top-bar {
+  width: 100vw;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+  padding-left: 5%; }
+
+.h-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
