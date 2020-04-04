@@ -33,6 +33,7 @@ class Shopper extends Component {
           ];
         }
         prevState.show_card = false;
+        prevState['search'] = '';
         return prevState;
       });
   }
@@ -56,7 +57,7 @@ class Shopper extends Component {
   handleAutoCompleteChange(__key, value) {
     this.setState((prevState) => {
       prevState["search"] = value;
-      prevState["show_card"] = value !== "";
+      prevState["show_card"] = value !== "" && value !== null;
       return prevState;
     });
   }
