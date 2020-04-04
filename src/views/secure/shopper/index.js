@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Article from '../../components/article' 
 import { Link, Route } from 'react-router-dom';
 import CreateShoppingList from './shoppingList';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+
 
 class Shopper extends Component {
   constructor(props) {
@@ -23,21 +21,29 @@ class Shopper extends Component {
   }
 
   addToChart(item_title) {
-    const alreadyIn = this.state.shopping_list.some(item => item.name === item_title)
-    if(!alreadyIn){
-      this.handleChange("shopping_list", [...this.state.shopping_list, {'name': item_title}])
-      console.log(this.state.shopping_list)
-    }
+      console.log("AJOUTER AU PANIER", item_title)
+      this.setState((prevState) => {
+        let alreadyIn = prevState.shopping_list.some(
+          (item) => item.name === item_title
+        ) || item_title === null;
+        if(!alreadyIn){
+          prevState.shopping_list = [
+            ...prevState.shopping_list,
+            { name: item_title },
+          ];
+        }
+        prevState.show_card = false;
+        return prevState;
+      });
   }
 
   removeChart(item_title) {
+    console.log("ENLEVER DU PANIER", item_title)
     this.setState((prevState) => {
       prevState["shopping_list"] = prevState.shopping_list.filter((el) => el.name !== item_title);
       prevState["show_card"] = false;
       return prevState;
     })
-    console.log(this.state.shopping_list);
-    console.log(this.state.show_card)
   }
 
   handleChange(key, value) {
@@ -56,43 +62,15 @@ class Shopper extends Component {
   }
 
   render() {
-    console.log(this.state.shopping_list)
-    let foodAvailable = ['Chocolate', 'Beans', 'Stuff', 'Other Stuff'];
-    // {this.state.order_status != "" && }
+    // console.log(this.state.shopping_list);
+    // console.log(this.state.show_card);
     if (this.props.match.isExact) {
       return (
         <Fragment>
-          <div>Shopper</div>
-          <div style={{ width: 300 }}>
-            <Autocomplete
-              freeSolo
-              options={foodAvailable.map((option) => option)}
-              onChange={this.handleAutoCompleteChange}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Search"
-                  margin="normal"
-                  variant="outlined"
-                />
-              )}
-            />
-            <div>
-            {
-              this.state.show_card &&
-              <Article
-                title={this.state.search}
-                addToChart={this.addToChart}
-                remove={this.removeChart}
-                {...this.state}
-              />
-            }
-            </div>
-            <div>
-              <Link to="/app/shoppinglist" className="button is-success">
-                Create Shopping List
-              </Link>
-            </div>
+          <div>
+            <Link to="/app/shoppinglist" className="button is-success">
+              Create Shopping List
+            </Link>
           </div>
         </Fragment>
       );
@@ -100,7 +78,14 @@ class Shopper extends Component {
     return (
       <Route
         path="/app/shoppinglist"
-        render={(props) => <CreateShoppingList {...props} {...this.state} remove={this.removeChart} />}
+        render={(props) => <CreateShoppingList 
+          {...props} 
+          {...this.state} 
+          remove={this.removeChart}
+          handleAutoCompleteChange={this.handleAutoCompleteChange}
+          removeChart={this.removeChart}
+          addToChart={this.addToChart}
+        />}
       />
     );
   }

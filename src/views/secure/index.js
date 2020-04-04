@@ -4,9 +4,6 @@ import Shopper from './shopper';
 import Volunteer from './volunteer';
 
 class Secure extends Component {
-  constructor(props){
-    super(props)
-  }
 
   render() {
     return (
