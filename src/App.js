@@ -29,13 +29,14 @@ class App extends Component {
     var isAuthenticated = cookies.get('isAuthenticated');
     if(id && isAuthenticated) {
       this.handleChange("userId", id)
+      this.handleChange('userId', parseInt(id));
       this.handleChange("isAuthenticated", true)
     }
   }
 
   login (id) {
     const cookies = new Cookies();
-    this.handleChange("userId", id)
+    this.handleChange("userId", parseInt(id))
     this.handleChange("isAuthenticated", true)
     cookies.set('userId', id, { path: '/' });
     cookies.set('isAuthenticated', true, { path: '/' });

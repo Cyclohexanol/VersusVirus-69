@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import Autocomplete from 'react-autocomplete';
 import Article from '../../components/article' 
-import { Link, Route, Redirect} from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import ShoppingList from './shoppingList';
+import TextField from '';
 
 class Shopper extends Component {
   constructor(props) {
@@ -13,7 +15,6 @@ class Shopper extends Component {
       delivery_address: ""
     };
     this.addToChart = this.addToChart.bind(this)
-    console.log(this.props)
   }
 
   addToChart(item_title){
@@ -23,23 +24,50 @@ class Shopper extends Component {
     });
   }
 
+  removeChart(item_title){
+    this.setState(prevState => {
+
+    })
+  }
+
   render() {
-    console.log(this.props)
+    let foodAvailable = ['Chocolate', 'Beans', 'Stuff', 'Other Stuff'];
     // {this.state.order_status != "" && }
       if (this.props.match.isExact) {
         return (
           <Fragment>
             <div>Shopper</div>
             <div>
-              <Article title="Chocolate" addToChart={this.addToChart} interactive={true} {...this.state}/>
+              <Article
+                title="Chocolate"
+                addToChart={this.addToChart}
+                interactive={true}
+                {...this.state}
+              />
             </div>
             <div>
-              <Link to="/app/shoppinglist" className="button is-success">View Shopping List</Link>
+              <Link to="/app/shoppinglist" className="button is-success">
+                View Shopping List
+              </Link>
+            </div>
+            <div style={{ width: 300 }}>
+              <Autocomplete
+                freeSolo
+                options={foodAvailable.map((option) => option)}
+                renderInput={(params) => (
+                  <Input
+                    {...params}
+                    label="freeSolo"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                )}
+              />
             </div>
           </Fragment>
-        )
+        );
       }
-      return(<Route path="/app/shoppinglist"  render={(props) => <ShoppingList {...props} />} />)
+      return(<Route path="/app/shoppinglist"  render={(props) => <ShoppingList {...props} {...this.state} />} />)
   }
 }
 
