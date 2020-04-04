@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/VersusVirus-69/static/css/main.574cb364.chunk.css",
+    "main.js": "/VersusVirus-69/static/js/main.106810cb.chunk.js",
+    "main.js.map": "/VersusVirus-69/static/js/main.106810cb.chunk.js.map",
+    "runtime-main.js": "/VersusVirus-69/static/js/runtime-main.b9669c18.js",
+    "runtime-main.js.map": "/VersusVirus-69/static/js/runtime-main.b9669c18.js.map",
+    "static/js/2.49593740.chunk.js": "/VersusVirus-69/static/js/2.49593740.chunk.js",
+    "static/js/2.49593740.chunk.js.map": "/VersusVirus-69/static/js/2.49593740.chunk.js.map",
+    "index.html": "/VersusVirus-69/index.html",
+    "precache-manifest.48e07d5436f87333f9b28da79f6de201.js": "/VersusVirus-69/precache-manifest.48e07d5436f87333f9b28da79f6de201.js",
+    "service-worker.js": "/VersusVirus-69/service-worker.js",
+    "static/css/main.574cb364.chunk.css.map": "/VersusVirus-69/static/css/main.574cb364.chunk.css.map",
+    "static/js/2.49593740.chunk.js.LICENSE.txt": "/VersusVirus-69/static/js/2.49593740.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/VersusVirus-69/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9669c18.js",
+    "static/js/2.49593740.chunk.js",
+    "static/css/main.574cb364.chunk.css",
+    "static/js/main.106810cb.chunk.js"
+  ]
+}
