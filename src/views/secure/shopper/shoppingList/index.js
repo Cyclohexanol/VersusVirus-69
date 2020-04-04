@@ -17,12 +17,10 @@ class CreateShoppingList extends Component {
     this.setState({
       key_autocomplete: item_title
     })
-    console.log(this.state.key_autocomplete)
     this.props.addToChart(item_title)
   }
 
   render() {
-    console.log(this.state.key_autocomplete)
     let listItems = this.props.shopping_list.map((d) =>
       <Article 
         key={d.name}
@@ -35,7 +33,6 @@ class CreateShoppingList extends Component {
       />
     )
     let foodAvailable = ['Chocolate', 'Beans', 'Stuff', 'Other Stuff'];
-    console.log(this.state.read)
     // {this.state.order_status != "" && }
     return (
       <Fragment>
@@ -62,15 +59,14 @@ class CreateShoppingList extends Component {
                 title={this.props.search}
                 add={this.addChart}
                 remove={this.props.remove}
+                onChange={this.props.handleChange}
                 {...this.props}
                 {...this.state}
               />
             )}
           </div>
           <div>ShoppingList</div>
-          <div>
-            {listItems}
-          </div>
+          <div>{listItems}</div>
         </div>
       </Fragment>
     );

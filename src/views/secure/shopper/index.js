@@ -12,7 +12,9 @@ class Shopper extends Component {
       contact: '',
       delivery_address: '',
       search: '',
-      show_card: false
+      show_card: false,
+      article_quantity: 1,
+      special_request: ""
     };
     this.addToChart = this.addToChart.bind(this);
     this.removeChart = this.removeChart.bind(this);
@@ -21,7 +23,6 @@ class Shopper extends Component {
   }
 
   addToChart(item_title) {
-      console.log("AJOUTER AU PANIER", item_title)
       this.setState((prevState) => {
         let alreadyIn = prevState.shopping_list.some(
           (item) => item.name === item_title
@@ -29,7 +30,11 @@ class Shopper extends Component {
         if(!alreadyIn){
           prevState.shopping_list = [
             ...prevState.shopping_list,
-            { name: item_title },
+            { 
+              name: item_title,
+              quantity: this.state.article_quantity,
+              special_request: this.state.special_request
+            },
           ];
         }
         prevState.show_card = false;
@@ -39,7 +44,6 @@ class Shopper extends Component {
   }
 
   removeChart(item_title) {
-    console.log("ENLEVER DU PANIER", item_title)
     this.setState((prevState) => {
       prevState["shopping_list"] = prevState.shopping_list.filter((el) => el.name !== item_title);
       prevState["show_card"] = false;
@@ -63,8 +67,6 @@ class Shopper extends Component {
   }
 
   render() {
-    // console.log(this.state.shopping_list);
-    // console.log(this.state.show_card);
     if (this.props.match.isExact) {
       return (
         <Fragment>
@@ -82,6 +84,7 @@ class Shopper extends Component {
         render={(props) => <CreateShoppingList 
           {...props} 
           {...this.state} 
+          handleChange={this.handleChange}
           remove={this.removeChart}
           handleAutoCompleteChange={this.handleAutoCompleteChange}
           removeChart={this.removeChart}
