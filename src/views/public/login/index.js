@@ -43,26 +43,26 @@ class Login extends Component {
               </h2>
               <div className="card">
                 <div className="card-content h-centered">
-                  <div class="field">
-                    <div class="control">
+                  <div className="field">
+                    <div className="control">
                       <input
-                        class="input"
+                        className="input"
                         type="text"
                         placeholder="Username"
                         onChange={e => this.handleChange("username", e.target.value)}/>
                     </div>
                   </div>
-                  <div class="field">
-                    <div class="control">
+                  <div className="field">
+                    <div className="control">
                       <input
-                        class="input"
+                        className="input"
                         type="password"
                         placeholder="Password"
                         onChange={e => this.handleChange("password", e.target.value)}/>
                     </div>
                   </div>
-                  <div class="field">
-                    <div class="control">
+                  <div className="field">
+                    <div className="control">
                       <button
                         className="button is-medium"
                         onClick={() => this.submit()}
