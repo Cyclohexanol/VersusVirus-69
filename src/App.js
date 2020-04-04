@@ -3,7 +3,7 @@ import Home from './views/public/home';
 import Login from './views/public/login';
 import Signup from './views/public/signup';
 import Secure from './views/secure';
-import ShoppingList from './views/secure/shopper/shoppingList'
+import Cookies from 'universal-cookie';
 import {
   BrowserRouter as Router,
   Route,
@@ -23,9 +23,22 @@ class App extends Component {
     this.login = this.login.bind(this)
   }
 
+  componentDidMount() {
+    const cookies = new Cookies();
+    var id = cookies.get('userId');
+    var isAuthenticated = cookies.get('isAuthenticated');
+    if(id && isAuthenticated) {
+      this.handleChange("userId", id)
+      this.handleChange("isAuthenticated", true)
+    }
+  }
+
   login (id) {
+    const cookies = new Cookies();
     this.handleChange("userId", id)
     this.handleChange("isAuthenticated", true)
+    cookies.set('userId', id, { path: '/' });
+    cookies.set('isAuthenticated', true, { path: '/' });
   }
 
   handleChange (key, value) {
