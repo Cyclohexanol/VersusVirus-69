@@ -1,37 +1,29 @@
 import React, { Component, Fragment } from 'react';
 import Article from '../../../components/article';
 
-class ShoppingList extends Component {
-  constructor(props) {
-    super(props);
-    // this.remove = this.remove.bind(this)
-    console.log(props);
-  }
-
-  // remove(item_title){
-  //   this.setState(prevState =>
-  //     prevState["shopping_list"] = {name: item_title};
-  //     return prevState;
-  //   )
-  // }
+class CreateShoppingList extends Component {
 
   render() {
+    const listItems = this.props.shopping_list.map((d) =>
+        <Article 
+          title={d.name}
+          added={true}
+          remove={this.props.remove}
+        />
+      )
     // {this.state.order_status != "" && }
     return (
       <Fragment>
         <div>ShoppingList</div>
         <div>
-          <Article
-            title="Chocolate"
-            interactive={false}
-          />
+          {listItems}
         </div>
       </Fragment>
     );
   }
 }
 
-export default ShoppingList;
+export default CreateShoppingList;
 // Si il ya un order : view status
 // Si il y en a pas : no current order with button create a shopping List
 // Une autre page pour create shopping list where you can add articles
