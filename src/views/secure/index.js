@@ -4,12 +4,17 @@ import Shopper from './shopper';
 import Volunteer from './volunteer';
 
 class Secure extends Component {
+  constructor(props){
+    super(props)
+    console.log(props)
+  }
+
   render() {
     return (
       <Fragment>
-        {this.props.userId == 1 && <Shopper />}
-        {this.props.userId == 3 && <Volunteer />}
-        {this.props.userId != 3 && this.props.userId != 1 && "Can't resolve User Type"}
+        {this.props.userId === 1 && <Shopper {...this.props}/>}
+        {this.props.userId === 3 && <Volunteer />}
+        {this.props.userId !== 3 && this.props.userId !== 1 && "Can't resolve User Type"}
       </Fragment>
     );
   }

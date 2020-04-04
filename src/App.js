@@ -62,7 +62,6 @@ class App extends Component {
             <PublicRoute path='/login' component={Login} isAuthenticated={this.state.isAuthenticated} login={this.login} />
             <PublicRoute path='/signup' component={Signup} isAuthenticated={this.state.isAuthenticated} />
             <SecureRoute path='/app' component={Secure} isAuthenticated={this.state.isAuthenticated} userId={this.state.userId} />
-            <Route exact path='/app' render={() => <Redirect to='/app/home' />} />
           </div>
         </Router>
     );
@@ -85,7 +84,7 @@ const SecureRender = props => {
 const SecureRoute = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
-    render={props => <SecureRender {...rest} component={Component} isAuthenticated={isAuthenticated} />}
+    render={props => <SecureRender {...props} {...rest} component={Component} isAuthenticated={isAuthenticated} />}
   />
 )
 
@@ -104,7 +103,7 @@ const PublicRender = props => {
 const PublicRoute = (  {component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
-    render={props => <PublicRender {...rest} component={Component} isAuthenticated={isAuthenticated} />}
+    render={props => <PublicRender {...rest} {...props} component={Component} isAuthenticated={isAuthenticated} />}
   />
 )
 
