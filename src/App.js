@@ -36,7 +36,7 @@ class App extends Component {
 
   login (id) {
     const cookies = new Cookies();
-    this.handleChange("userId", id)
+    this.handleChange("userId", parseInt(id))
     this.handleChange("isAuthenticated", true)
     cookies.set('userId', id, { path: '/' });
     cookies.set('isAuthenticated', true, { path: '/' });

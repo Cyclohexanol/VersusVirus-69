@@ -1,45 +1,94 @@
 import React, { Component, Fragment } from 'react';
-import Article from '../../components/article' 
-import { Link, Route, Redirect} from 'react-router-dom';
-import ShoppingList from './shoppingList';
+import { Link, Route } from 'react-router-dom';
+import CreateShoppingList from './shoppingList';
+
 
 class Shopper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      order_status: "",
-      shopping_list: {},
-      contact: "",
-      delivery_address: ""
+      order_status: '',
+      shopping_list: [],
+      contact: '',
+      delivery_address: '',
+      search: '',
+      show_card: false
     };
-    this.addToChart = this.addToChart.bind(this)
-    console.log(this.props)
+    this.addToChart = this.addToChart.bind(this);
+    this.removeChart = this.removeChart.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAutoCompleteChange = this.handleAutoCompleteChange.bind(this)
   }
 
-  addToChart(item_title){
-    this.setState(prevState => {
-      prevState["shopping_list"] = {name: item_title};
+  addToChart(item_title) {
+      console.log("AJOUTER AU PANIER", item_title)
+      this.setState((prevState) => {
+        let alreadyIn = prevState.shopping_list.some(
+          (item) => item.name === item_title
+        ) || item_title === null;
+        if(!alreadyIn){
+          prevState.shopping_list = [
+            ...prevState.shopping_list,
+            { name: item_title },
+          ];
+        }
+        prevState.show_card = false;
+        prevState['search'] = '';
+        return prevState;
+      });
+  }
+
+  removeChart(item_title) {
+    console.log("ENLEVER DU PANIER", item_title)
+    this.setState((prevState) => {
+      prevState["shopping_list"] = prevState.shopping_list.filter((el) => el.name !== item_title);
+      prevState["show_card"] = false;
+      return prevState;
+    })
+  }
+
+  handleChange(key, value) {
+    this.setState((prevState) => {
+      prevState[key] = value;
+      return prevState;
+    });
+  }
+
+  handleAutoCompleteChange(__key, value) {
+    this.setState((prevState) => {
+      prevState["search"] = value;
+      prevState["show_card"] = value !== "" && value !== null;
       return prevState;
     });
   }
 
   render() {
-    console.log(this.props)
-    // {this.state.order_status != "" && }
-      if (this.props.match.isExact) {
-        return (
-          <Fragment>
-            <div>Shopper</div>
-            <div>
-              <Article title="Chocolate" addToChart={this.addToChart} interactive={true} {...this.state}/>
-            </div>
-            <div>
-              <Link to="/app/shoppinglist" className="button is-success">View Shopping List</Link>
-            </div>
-          </Fragment>
-        )
-      }
-      return(<Route path="/app/shoppinglist"  render={(props) => <ShoppingList {...props} />} />)
+    // console.log(this.state.shopping_list);
+    // console.log(this.state.show_card);
+    if (this.props.match.isExact) {
+      return (
+        <Fragment>
+          <div>
+            <Link to="/app/shoppinglist" className="button is-success">
+              Create Shopping List
+            </Link>
+          </div>
+        </Fragment>
+      );
+    }
+    return (
+      <Route
+        path="/app/shoppinglist"
+        render={(props) => <CreateShoppingList 
+          {...props} 
+          {...this.state} 
+          remove={this.removeChart}
+          handleAutoCompleteChange={this.handleAutoCompleteChange}
+          removeChart={this.removeChart}
+          addToChart={this.addToChart}
+        />}
+      />
+    );
   }
 }
 
