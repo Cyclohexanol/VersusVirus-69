@@ -15,9 +15,8 @@ class Article extends Component {
         <div className="card-content">
           <header className="card-head">
             <p className="card-title">{this.props.title}</p>
-            <button className="delete" aria-label="close"></button>
           </header>
-          <section className="card-body">{this.props.title}</section>
+          {/* <section className="card-body">{this.props.title}</section> */}
           <footer className="card-foot">
             {this.props.interactive && (
               <button
@@ -27,7 +26,9 @@ class Article extends Component {
                 Add to chart
               </button>
             )}
-            {/* <button onClick={this.props.remove(this.props.title)} className="button">Close</button> */}
+            {!this.props.interactive && (
+              <button className="delete" aria-label="close"></button>
+            )}
           </footer>
         </div>
       </div>
