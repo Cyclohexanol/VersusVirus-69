@@ -21,13 +21,26 @@ class Volunteer extends Component {
 
   render() {
     return (
-      <section className="hero is-light">
-        <div className="hero-body">
-          <div className="container h-centered has-text-centered">
-            <button className="button is-large">Deliveries History</button>
+      <Fragment>
+        <section className="hero is-light">
+          <div className="hero-body">
+            <div className="container h-centered has-text-centered">
+              <div>You currently have no pending deliveries.</div>
+              <br/>
+              <button className="button is-medium">Deliveries History</button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="hero is-primary">
+          <div className="hero-body">
+            <div className="container">
+              <div className="title is-size-4">Find a person in need !</div>
+              <div className="subtitle is-size-5">Enter your settings</div>
+              <input class="input" type="text" placeholder="Text input"/>
+            </div>
+          </div>
+        </section>
+      </Fragment>
     );
   }
 }
