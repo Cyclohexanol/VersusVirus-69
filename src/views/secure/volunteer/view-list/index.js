@@ -8,7 +8,11 @@ class ViewShoppingList extends Component {
 
 	render() {
 		return (
-      <div>hi</div>
+      <div className="is-flex-column h-centered">
+        {this.props.currentOrder.map((i) => {
+          
+        })}
+      </div>
     )
 	}
 }

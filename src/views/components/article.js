@@ -5,26 +5,6 @@ class Article extends Component {
 
   constructor(props){
     super(props)
-    this.onChangeRequest = this.onChangeRequest.bind(this)
-    this.onChangeQuantity = this.onChangeQuantity.bind(this)
-  }
-
-  onChangeQuantity(e) {
-    const added = this.props.shopping_list.some(
-      (item) => item.name === this.props.title
-    );
-    if(added){
-      this.props.onChange('article_quantity', e.target.value);
-    }
-  }
-
-  onChangeRequest(e) {
-    const added = this.props.shopping_list.some(
-      (item) => item.name === this.props.title
-    );
-    if(added){
-      this.props.onChange('special_request', e.target.value);
-    }
   }
 
   render() {
@@ -34,46 +14,55 @@ class Article extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <header className="card-head">
-            <p className="card-title">{this.props.title}</p>
-          </header>
-          <section className="card-body">
-            <br />
-            Quantity : <br />
-            <input
-              key="quantity"
-              type="number"
-              onChange={this.onChangeQuantity}
-              defaultValue={this.props.shopping_list[this.props.title] !== undefined ? this.props.shopping_list[this.props.title].quantity : ''}
-            />
-            <br />
-            Special Request :
-            <input
-              key="special_request"
-              type="textbox"
-              onChange={this.onChangeRequest}
-              defaultValue={this.props.shopping_list[this.props.title] !== undefined ? this.props.shopping_list[this.props.title].special_request : ''}
-            />
-            <br />
-            <br />
-          </section>
-          <footer className="card-foot">
-            {!added && (
-              <button
-                onClick={() => this.props.add(this.props.title)}
-                class="button is-success"
-              >
-                Add to chart
-              </button>
-            )}
-            {added && (
+          <p className="subtitle">{this.props.title}</p>
+          <div>Quantity</div>
+          <div className="field has-addons">
+            <div className="control">
+              <input
+                className="input"
+                key="quantity"
+                type="number"
+                onChange={(e) => this.props.changeTempInfo("article_quantity",e.target.value)}
+                defaultValue={this.props.item_quantity ? this.props.item_quantity : 0}
+                disabled={this.props.modifiable ? false : true}
+              />
+            </div>
+            <p class="control">
+              <a class="button is-static">
+                {this.props.item_type ? this.props.item_type : "units"}
+              </a>
+            </p>
+          </div>
+          <div>Special request</div>
+          <div className="field">
+            <div className="control">
+              <input
+                className="input"
+                key="special_request"
+                type="textbox"
+                onChange={(e) => this.props.changeTempInfo("special_request",e.target.value)}
+                defaultValue={this.props.item_special_request ? this.props.item_special_request : ""}
+                disabled={this.props.modifiable ? false : true}
+              />
+            </div>
+          </div>
+          <div className="card-footer">
+            {!added &&
+              <div
+                className="card-footer-item is-primary-background"
+                onClick={() => this.props.add(this.props.title)}>
+                  Add to chart
+              </div>
+            }
+            {added &&
               <button
                 onClick={() => this.props.remove(this.props.title)}
-                className="delete"
-                aria-label="close"
-              ></button>
-            )}
-          </footer>
+                className="card-footer-item is-theme-red-background"
+              >
+                Remove
+              </button>
+            }
+          </div>
         </div>
       </div>
     );

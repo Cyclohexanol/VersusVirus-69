@@ -9,7 +9,7 @@ class ViewShoppingHistory extends Component {
 
 	render() {
 		return (
-      <div className="is-flex-column sapce-between is-fullheight">
+      <div className="is-flex-column is-fullheight">
       <Link className="button is-medium is-primary is-column-item" to={"/app"}>Back</Link>
         <div className="is-flex-column h-centered">
           {this.props.ordersDelivered.length < 1 &&

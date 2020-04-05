@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Article from '../../../components/article';
+import Confirmation from './confirmation';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Link, Route } from 'react-router-dom';
 
 class CreateShoppingList extends Component {
 
@@ -13,62 +15,109 @@ class CreateShoppingList extends Component {
     this.addChart = this.addChart.bind(this)
   }
 
-  addChart(item_title){
+  addChart(item){
     this.setState({
-      key_autocomplete: item_title
+      key_autocomplete: item.name
     })
-    this.props.addToChart(item_title)
+    this.props.addToChart(item)
   }
 
   render() {
-    let listItems = this.props.shopping_list.map((d) =>
-      <Article 
-        key={d.name}
-        title={d.name}
-        // added={this.props.shopping_list.some(item => this.props.title === item.name)}
-        add={this.addChart}
-        remove={this.props.remove}
-        {...this.state}
-        {...this.props}
-      />
-    )
-    let foodAvailable = ['Chocolate', 'Beans', 'Stuff', 'Other Stuff'];
-    // {this.state.order_status != "" && }
-    return (
-      <Fragment>
-        <div>Create Shopping List</div>
-        <div style={{ width: 300 }}>
-          <Autocomplete
-            freeSolo
-            key={this.state.key_autocomplete}
-            options={foodAvailable.map((option) => option)}
-            onChange={this.props.handleAutoCompleteChange}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Search"
-                margin="normal"
-                variant="outlined"
+    let foodAvailable = [
+      {
+        name: 'Chocolate',
+        type: 'g'
+      },
+      {
+        name: 'Beans',
+        type: 'g'
+      },
+      {
+        name: 'Milk',
+        type: 'L'
+      },
+      {
+        name: 'Orange Juice',
+        type: 'L'
+      }];
+    if(this.props.match.isExact) {
+      return (
+        <Fragment>
+          <Link className="button is-medium is-primary is-column-item" to={"/app"}>Back</Link>
+          <div className="is-flex-column is-fullheight h-centered is-column-item">
+            <div className="subtitle is-size-3">Create Shopping List</div>
+            <div className="is-column-item" style={{ minWidth: 300 }}>
+              <Autocomplete
+                freeSolo
+                key={this.state.key_autocomplete}
+                options={foodAvailable.map((option) => option.name)}
+                onChange={this.props.handleAutoCompleteChange}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                )}
               />
-            )}
-          />
-          <div>
-            {this.props.show_card && (
-              <Article
-                key={this.props.search}
-                title={this.props.search}
-                add={this.addChart}
-                remove={this.props.remove}
-                onChange={this.props.handleChange}
-                {...this.props}
-                {...this.state}
-              />
+              <div>
+                {this.props.show_card && (
+                  <Article
+                    key={this.props.search}
+                    title={this.props.search}
+                    add={this.addChart}
+                    remove={this.props.remove}
+                    onChange={this.props.handleChange}
+                    changeTempInfo={this.changeTempInfo}
+                    {...this.props}
+                    {...this.state}
+                    modifiable
+                  />
+                )}
+              </div>
+            </div>
+            <div className="subtitle is-size-4">
+              My List
+            </div>
+            {this.props.shopping_list.length === 0 &&
+              <div className="card">
+                <div className="card-content">
+                  Your list is currently empty type a product name in the search bar to add an item.
+                </div>
+              </div>
+            }
+            {this.props.shopping_list.map((d) => {
+              return(
+                <Article
+                  key={d.name}
+                  title={d.name}
+                  item_quantity={d.quantity}
+                  item_special_request={d.special_request}
+                  item_type={d.type}
+                  add={this.addChart}
+                  remove={this.props.remove}
+                  {...this.state}
+                  {...this.props}
+                />
+              )}
             )}
           </div>
-          <div>ShoppingList</div>
-          <div>{listItems}</div>
-        </div>
-      </Fragment>
+          {this.props.shopping_list.length !== 0 &&
+            <Link className="button is-medium is-primary" to={"/app/shoppinglist/confirm"}>Request delivery</Link>
+          }
+        </Fragment>
+      );
+    }
+    return (
+      <Route
+        path="/app/shoppinglist/confirm"
+        render={(props) => <Confirmation
+          {...props}
+          order_status ={this.props.order_status}
+          changeTempInfo={this.props.changeTempInfo}
+        />}
+      />
     );
   }
 }

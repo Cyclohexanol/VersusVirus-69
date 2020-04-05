@@ -15,31 +15,36 @@ class Volunteer extends Component {
       orderLists: [
         {
           status: "",
+          contact: "John Inneed",
           address: "Heart Road 36, 8000 Zurich",
           number: "221-148",
           deliveredOn: "",
           items: [
             {
               name: "Pasta",
-              quantity: "1000g",
+              quantity: 1000,
+              type: "grams",
               note: "Penne or spaghetti",
               weight: 1
             },
             {
               name: "Toast",
-              quantity: "500g",
+              quantity: 500,
+              type: "grams",
               weight: 0.5
             },
             {
               name: "Milk",
-              quantity: "3L",
+              quantity: 3,
               note: "Skinny",
+              type: "liters",
               weight: 3
             },
             {
               name: "Orange Juice",
-              quantity: "2L",
+              quantity: 2,
               note: "Skinny",
+              type: "liters",
               weight: 2
             }
           ],
@@ -100,6 +105,7 @@ class Volunteer extends Component {
                     <div className="card-content">
                       <p className="subtitle">Current order</p>
                       <p className="has-text-weight-semibold">Deliver to:</p>
+                      <p>{this.state.activeList.contact}</p>
                       <p>{this.state.activeList.address}</p>
                       <br/>
                       <p className="has-text-weight-semibold">Estimated weight:</p>
@@ -216,7 +222,7 @@ class Volunteer extends Component {
     return(
       <Fragment>
         <Route path="/app/view-history"  render={(props) => <ViewShoppingHistory {...props} ordersDelivered={this.state.ordersDelivered}/>} />
-        <Route path="/app/view-list"  render={(props) => <ViewShoppingList {...props} />} />
+        <Route path="/app/view-list"  render={(props) => <ViewShoppingList {...props} currentOrder={this.state.activeList}/>} />
       </Fragment>
     )
   }

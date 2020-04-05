@@ -7156,3 +7156,11 @@ label.panel-block {
 
 .space-between {
   justify-content: space-between; }
+
+.is-primary-background {
+  background-color: #077A88;
+  color: white; }
+
+.is-theme-red-background {
+  background-color: #E8695C;
+  color: white; }
