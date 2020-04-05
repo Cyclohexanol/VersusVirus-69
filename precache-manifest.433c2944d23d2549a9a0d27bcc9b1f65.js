@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c67fa91b3972f1e595847c8f0e3c769d",
+    "revision": "75ec554f092b8d47f8c5d0c5fb2e852f",
     "url": "/VersusVirus-69/index.html"
   },
   {
-    "revision": "fa09eb6459385d17282d",
+    "revision": "1dc2d34c38784edabbb5",
     "url": "/VersusVirus-69/static/css/main.ad382d14.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VersusVirus-69/static/js/2.a58e768a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fa09eb6459385d17282d",
-    "url": "/VersusVirus-69/static/js/main.3b0c5d3e.chunk.js"
+    "revision": "1dc2d34c38784edabbb5",
+    "url": "/VersusVirus-69/static/js/main.baaa192e.chunk.js"
   },
   {
     "revision": "0b78fc67af3258e4a31a",
