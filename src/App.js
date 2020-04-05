@@ -59,20 +59,44 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
-          <div className="app">
-            <Route exact path="/" render={() => (
-              this.state.isAuthenticated ?
-                <Redirect to="/app"/>
-                : <Redirect to="/home"/>
+      <Router basename={window.location.pathname || ''}>
+        <div className="app">
+          <Route
+            exact
+            path="/"
+            render={() =>
+              this.state.isAuthenticated ? (
+                <Redirect to="/app" />
+              ) : (
+                <Redirect to="/home" />
               )
-            }/>
-            <PublicRoute path='/home' component={Home} isAuthenticated={this.state.isAuthenticated} />
-            <PublicRoute path='/login' component={Login} isAuthenticated={this.state.isAuthenticated} login={this.login} />
-            <PublicRoute path='/signup' component={Signup} isAuthenticated={this.state.isAuthenticated} />
-            <SecureRoute path='/app' component={Secure} isAuthenticated={this.state.isAuthenticated} logout={this.logout} userId={this.state.userId} />
-          </div>
-        </Router>
+            }
+          />
+          <PublicRoute
+            path="/home"
+            component={Home}
+            isAuthenticated={this.state.isAuthenticated}
+          />
+          <PublicRoute
+            path="/login"
+            component={Login}
+            isAuthenticated={this.state.isAuthenticated}
+            login={this.login}
+          />
+          <PublicRoute
+            path="/signup"
+            component={Signup}
+            isAuthenticated={this.state.isAuthenticated}
+          />
+          <SecureRoute
+            path="/app"
+            component={Secure}
+            isAuthenticated={this.state.isAuthenticated}
+            logout={this.logout}
+            userId={this.state.userId}
+          />
+        </div>
+      </Router>
     );
   }
 }
