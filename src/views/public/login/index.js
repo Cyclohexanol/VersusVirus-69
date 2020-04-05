@@ -36,11 +36,10 @@ class Login extends Component {
       <Fragment>
         <section className="hero is-light is-fullheight">
           <div className="hero-body">
-            <div className="container h-centered has-text-centered	">
-              <h1 className="title is-size-2">VersusVirus 69</h1>
-              <h2 className="subtitle is-size-3">
-                Connect to fight the virus together.
-              </h2>
+            <div className="container h-centered has-text-centered">
+              <figure class="image is-column-item">
+                <img className="is-login-logo" src="TakeEatEasy_logo_colored@2x.png"/>
+              </figure>
               <div className="card">
                 <div className="card-content h-centered">
                   <div className="field">

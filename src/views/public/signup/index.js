@@ -7,9 +7,11 @@ class Signup extends Component {
     return(
       <Fragment>
         <div className="top-bar">
-          <div>
-            VersusVirus 69
-          </div>
+          <Link to={"/"}>
+            <figure class="image">
+              <img class="is-bar-logo" src="TakeEatEasy_logo_blackwhite_horiz@2x.png"/>
+            </figure>
+          </Link>
           <Link
             className="button"
             to={"login"}>
@@ -24,30 +26,29 @@ class Signup extends Component {
     				<p>
     					Please use the following dummy accounts to view the demo.
     				</p>
-
-    				<h3 className="is-size-4">Buyer</h3>
-    				<p>
-    				Username: buy
-    				</p>
-    				<p>
-    				Password: help
-    				</p>
-
-    				<h3 className="is-size-4">Shop owner</h3>
-    				<p>
-    				Username: owner
-    				</p>
-    				<p>
-    				Password: help
-    				</p>
-
-    				<h3 className="is-size-4">Volunteer</h3>
-    				<p>
-    				Username: volunteer
-    				</p>
-    				<p>
-    				Password: help
-    				</p>
+            <br/>
+            <div className="card is-fullwidth is-primary-background">
+              <div className="card-content">
+        				<h3 className="is-size-4">Login as a consumer</h3>
+        				<p>
+        				    Username: buy
+        				</p>
+        				<p>
+        				    Password: help
+        				</p>
+              </div>
+            </div>
+            <div className="card is-fullwidth">
+              <div className="card-content">
+        				<h3 className="is-size-4">Login as a volunteer</h3>
+        				<p>
+        				    Username: volunteer
+        				</p>
+        				<p>
+        				    Password: help
+        				</p>
+              </div>
+            </div>
           </div>
         </section>
       </Fragment>
