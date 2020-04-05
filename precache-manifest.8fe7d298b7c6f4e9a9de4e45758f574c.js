@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8b3aa43c9aad338865e63e3eebfc8b6b",
+    "revision": "056407ccd8517939e6d70401c7381c46",
     "url": "/VersusVirus-69/index.html"
   },
   {
