@@ -7125,6 +7125,9 @@ label.panel-block {
 .no-shrink {
   flex-shrink: 0; }
 
+.list-point {
+  margin-bottom: 0.5rem; }
+
 .top-bar {
   width: 100vw;
   height: 60px;
