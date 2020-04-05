@@ -1,8 +1,8 @@
 {
-  "homepage": "https://cyclohexanol.github.io/VersusVirus-69",
+  "homepage": "https://cyclohexanol.github.io/VersusVirus-69/",
   "name": "TakeEatEasy",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.9.9",
     "@material-ui/lab": "^4.0.0-alpha.48",
