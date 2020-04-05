@@ -40,7 +40,7 @@ class Article extends Component {
                   <select>
                     <option>units</option>
                     <option>grams</option>
-                    <option>litters</option>
+                    <option>liters</option>
                   </select>
                 </span>
               </p>
