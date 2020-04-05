@@ -19,6 +19,7 @@ class Volunteer extends Component {
           address: "Heart Road 36, 8000 Zurich",
           number: "221-148",
           deliveredOn: "",
+          loading: false,
           items: [
             {
               name: "Pasta",
@@ -62,12 +63,19 @@ class Volunteer extends Component {
   }
 
   findOrder() {
-    if(this.state.ordersDelivered.length < this.state.orderLists.length) {
-      this.handleChange("activeList", this.state.orderLists[this.state.ordersDelivered.length])
-      this.handleChange("orderStatus", "pending")
-    } else  {
-      this.handleChange("orderStatus", "not found")
-    }
+    this.handleChange("loading", true)
+    setTimeout(() => {
+      this.handleChange('loading', false)
+       if (this.state.ordersDelivered.length < this.state.orderLists.length) {
+         this.handleChange(
+           'activeList',
+           this.state.orderLists[this.state.ordersDelivered.length]
+         );
+         this.handleChange('orderStatus', 'pending');
+       } else {
+         this.handleChange('orderStatus', 'not found');
+       }
+    }, 3000)
   }
 
   acceptOrder() {
@@ -174,6 +182,7 @@ class Volunteer extends Component {
                                     className="input"
                                     type="number"
                                     onChange={e => this.handleChange("rangeKm", e.target.value)}
+                                    disabled={this.state.loading}
                                     value={this.state["rangeKm"]}/>
                                 </p>
                                 <p className="control">
@@ -193,6 +202,7 @@ class Volunteer extends Component {
                                     className="input"
                                     type="number"
                                     onChange={e => this.handleChange("maxLoad", e.target.value)}
+                                    disabled={this.state.loading}
                                     value={this.state["maxLoad"]}/>
                                 </p>
                                 <p className="control">
@@ -202,8 +212,9 @@ class Volunteer extends Component {
                                 </p>
                               </div>
                             </div>
-                            <button onClick={() => this.findOrder()} className="button is-large">
-                              GO
+                            <button onClick={() => this.findOrder()} className="button is-large" disabled={this.state.loading}>
+                            {!this.state.loading && "GO"}
+                            {this.state.loading && "Looking for an order..."}
                             </button>
                           </div>
                         </div>
