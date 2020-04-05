@@ -1,6 +1,6 @@
 {
   "homepage": "https://cyclohexanol.github.io/VersusVirus-69",
-  "name": "VersusVirus-69",
+  "name": "TakeEatEasy",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,10 +21,10 @@
     "universal-cookie": "^4.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build-dev": "npm run build",
-    "build-css": "node-sass-chokidar ./src -o ./src --watch --recursive",
-    "watch-css": "npm run build-css && node-sass-chokidar ./src -o ./src --watch --recursive",
+    "build-css": "node-sass-chokidar ./src -o ./src --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar ./src -o ./src --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
