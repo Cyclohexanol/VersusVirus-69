@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/VersusVirus-69/precache-manifest.6a3aa70b4657811b4d6d45a2e13ea094.js"
+  "/VersusVirus-69/precache-manifest.72584dfd7a101027fce365c13e526c8f.js"
 );
 
 self.addEventListener('message', (event) => {
