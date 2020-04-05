@@ -23,15 +23,29 @@ class Article extends Component {
                 key="quantity"
                 type="number"
                 onChange={(e) => this.props.changeTempInfo("article_quantity",e.target.value)}
-                defaultValue={this.props.item_quantity ? this.props.item_quantity : 0}
+                defaultValue={this.props.item_quantity ? this.props.item_quantity : 1}
                 disabled={this.props.modifiable ? false : true}
               />
             </div>
-            <p class="control">
-              <a class="button is-static">
-                {this.props.item_type ? this.props.item_type : "units"}
-              </a>
-            </p>
+            {!this.props.modifiable &&
+              <p class="control">
+                <a class="button is-static">
+                  {this.props.item_type ? this.props.item_type : "units"}
+                </a>
+              </p>
+            }
+            {this.props.modifiable &&
+              <p class="control">
+                <span class="select" onChange={(e) => this.props.changeTempInfo("type",e.target.value)}>
+                  <select>
+                    <option>units</option>
+                    <option>grams</option>
+                    <option>litters</option>
+                  </select>
+                </span>
+              </p>
+            }
+
           </div>
           <div>Special request</div>
           <div className="field">

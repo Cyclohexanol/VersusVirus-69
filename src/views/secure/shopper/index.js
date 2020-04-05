@@ -16,7 +16,7 @@ class Shopper extends Component {
       search: '',
       show_card: false,
       special_request: "",
-      article_quantity: 0,
+      article_quantity: 1,
       type: ""
     };
     this.addToChart = this.addToChart.bind(this);
@@ -55,7 +55,7 @@ class Shopper extends Component {
 
         this.setState({
           special_request: "",
-          article_quantity: 0,
+          article_quantity: 1,
           special_request: "",
           type: ""
         });
