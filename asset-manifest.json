@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/VersusVirus-69/static/css/main.1b7e425c.chunk.css",
-    "main.js": "/VersusVirus-69/static/js/main.a132f28f.chunk.js",
-    "main.js.map": "/VersusVirus-69/static/js/main.a132f28f.chunk.js.map",
+    "main.js": "/VersusVirus-69/static/js/main.f0d63532.chunk.js",
+    "main.js.map": "/VersusVirus-69/static/js/main.f0d63532.chunk.js.map",
     "runtime-main.js": "/VersusVirus-69/static/js/runtime-main.1b98a28e.js",
     "runtime-main.js.map": "/VersusVirus-69/static/js/runtime-main.1b98a28e.js.map",
     "static/js/2.a58e768a.chunk.js": "/VersusVirus-69/static/js/2.a58e768a.chunk.js",
     "static/js/2.a58e768a.chunk.js.map": "/VersusVirus-69/static/js/2.a58e768a.chunk.js.map",
     "index.html": "/VersusVirus-69/index.html",
-    "precache-manifest.90317129863de8b5365d34e38e5fc09a.js": "/VersusVirus-69/precache-manifest.90317129863de8b5365d34e38e5fc09a.js",
+    "precache-manifest.bb2996d6b626f32dee74bcb48d8f3990.js": "/VersusVirus-69/precache-manifest.bb2996d6b626f32dee74bcb48d8f3990.js",
     "service-worker.js": "/VersusVirus-69/service-worker.js",
     "static/css/main.1b7e425c.chunk.css.map": "/VersusVirus-69/static/css/main.1b7e425c.chunk.css.map",
     "static/js/2.a58e768a.chunk.js.LICENSE.txt": "/VersusVirus-69/static/js/2.a58e768a.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1b98a28e.js",
     "static/js/2.a58e768a.chunk.js",
     "static/css/main.1b7e425c.chunk.css",
-    "static/js/main.a132f28f.chunk.js"
+    "static/js/main.f0d63532.chunk.js"
   ]
 }
