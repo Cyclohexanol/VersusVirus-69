@@ -62,8 +62,7 @@ class App extends Component {
       <Router basename={window.location.pathname || ''}>
         <div className="app">
           <Route
-            exact
-            path="/"
+            exact path="/"
             render={() =>
               this.state.isAuthenticated ? (
                 <Redirect to="/app" />
