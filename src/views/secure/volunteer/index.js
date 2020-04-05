@@ -25,27 +25,31 @@ class Volunteer extends Component {
               quantity: 1000,
               type: "grams",
               note: "Penne or spaghetti",
-              weight: 1
+              weight: 1,
+              ready: false
             },
             {
               name: "Toast",
               quantity: 500,
               type: "grams",
-              weight: 0.5
+              weight: 0.5,
+              ready: false
             },
             {
               name: "Milk",
               quantity: 3,
               note: "Skinny",
               type: "liters",
-              weight: 3
+              weight: 3,
+              ready: false
             },
             {
               name: "Orange Juice",
               quantity: 2,
               note: "Skinny",
               type: "liters",
-              weight: 2
+              weight: 2,
+              ready: false
             }
           ],
           weight: 6.5,
@@ -222,7 +226,7 @@ class Volunteer extends Component {
     return(
       <Fragment>
         <Route path="/app/view-history"  render={(props) => <ViewShoppingHistory {...props} ordersDelivered={this.state.ordersDelivered}/>} />
-        <Route path="/app/view-list"  render={(props) => <ViewShoppingList {...props} currentOrder={this.state.activeList}/>} />
+        <Route path="/app/view-list"  render={(props) => <ViewShoppingList {...props} orderStatus={this.state.orderStatus} currentOrder={this.state.activeList}/>} />
       </Fragment>
     )
   }

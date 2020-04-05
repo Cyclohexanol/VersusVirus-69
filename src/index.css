@@ -7164,3 +7164,7 @@ label.panel-block {
 .is-theme-red-background {
   background-color: #E8695C;
   color: white; }
+
+.is-bar-logo {
+  max-height: 40px !important;
+  width: auto !important; }

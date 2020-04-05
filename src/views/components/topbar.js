@@ -12,7 +12,9 @@ class TopBar extends Component {
   render() {
     return (
       <div className="top-bar no-shrink">
-        <p>69</p>
+        <figure class="image">
+          <img class="is-bar-logo" src="TakeEatEasy_logo_blackwhite_horiz@2x.png"/>
+        </figure>
         <button className="button" onClick={()=>{this.props.logout()}}>Log Out</button>
       </div>
     );
