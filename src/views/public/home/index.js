@@ -6,9 +6,9 @@ class Home extends Component {
     return(
       <Fragment>
         <div className="top-bar">
-          <div>
-            VersusVirus 69
-          </div>
+          <figure class="image">
+            <img class="is-bar-logo" src="TakeEatEasy_logo_blackwhite_horiz@2x.png"/>
+          </figure>
           <Link
             className="button"
             to={"login"}>

@@ -7168,3 +7168,6 @@ label.panel-block {
 .is-bar-logo {
   max-height: 40px !important;
   width: auto !important; }
+
+.is-fullwidth {
+  width: 100%; }
