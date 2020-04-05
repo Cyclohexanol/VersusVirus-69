@@ -151,7 +151,7 @@ class Volunteer extends Component {
           {!this.state.activeList &&
             <section className="hero is-primary">
               <div className="hero-body">
-                <div className="container">
+                <div className="container h-centered">
                   {this.state.orderStatus === "not found" &&
                     <Fragment>
                       <span className="tag is-warning is-column-item is-size-6">No match found for these settings.</span>
